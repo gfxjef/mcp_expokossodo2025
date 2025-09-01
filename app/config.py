@@ -3,7 +3,10 @@ Application configuration module
 """
 import os
 from typing import List, Optional
-from pydantic_settings import BaseSettings
+try:
+    from pydantic_settings import BaseSettings
+except ImportError:
+    from pydantic import BaseSettings
 from dotenv import load_dotenv
 
 # Load environment variables
