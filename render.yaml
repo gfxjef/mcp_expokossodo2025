@@ -7,7 +7,7 @@ services:
     plan: free
     env: 
       - key: PYTHON_VERSION
-        value: "3.11"
+        value: "3.11.9"
       - key: LOG_LEVEL
         value: INFO
       - key: DEBUG
