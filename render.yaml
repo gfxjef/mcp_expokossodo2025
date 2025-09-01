@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: mcp-expokossodo2025
+    runtime: python
+    buildCommand: pip install --upgrade pip && pip install -r requirements-render.txt
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    env: 
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: LOG_LEVEL
+        value: INFO
+      - key: DEBUG
+        value: "false"
+      - key: APP_NAME
+        value: MCP-Expokossodo
+      - key: APP_VERSION
+        value: "1.0.0"
+      - key: JWT_ALGORITHM
+        value: HS256
+      - key: JWT_ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "30"
+      - key: RATE_LIMIT_READS_PER_SECOND
+        value: "10" 
+      - key: RATE_LIMIT_WRITES_PER_SECOND
+        value: "3"
+    envVarsFromGroup: mcp-expokossodo-secrets
+    
+envVarGroups:
+  - name: mcp-expokossodo-secrets
+    envVars:
+      - key: DB_HOST
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: JWT_SECRET_KEY
+        sync: false
