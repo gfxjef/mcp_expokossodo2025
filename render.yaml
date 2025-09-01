@@ -2,8 +2,10 @@ services:
   - type: web
     name: mcp-expokossodo2025
     runtime: python
-    buildCommand: pip install --upgrade pip && pip install -r requirements-render.txt
-    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    buildCommand: |
+      python3.11 -m pip install --upgrade pip
+      python3.11 -m pip install -r requirements-render.txt
+    startCommand: python3.11 -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
     plan: free
     env: 
       - key: PYTHON_VERSION
