@@ -40,7 +40,7 @@ class GetInscritosInput(BaseModel):
         return None if v == "" else v
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "eventoId": 123,
                 "page": 1,
@@ -54,7 +54,7 @@ class GetAforoInput(BaseModel):
     eventoId: int = Field(..., description="ID del evento")
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "eventoId": 123
             }
@@ -73,7 +73,7 @@ class ConfirmarAsistenciaInput(BaseModel):
     observacion: Optional[str] = Field(None, max_length=500, description="Observación opcional")
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "registroId": 1037,
                 "eventoId": 123,
@@ -117,7 +117,7 @@ class GetEstadisticasInput(BaseModel):
         return v
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "granularidad": "DIA",
                 "rango": {
@@ -148,7 +148,7 @@ class BuscarRegistroInput(BaseModel):
         return v
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "query": "juan perez",
                 "campos": ["nombre", "email"]
@@ -161,7 +161,7 @@ class MapaSalaEventoInput(BaseModel):
     dia: date = Field(..., description="Día para obtener el mapa sala-evento")
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "dia": "2025-08-30"
             }

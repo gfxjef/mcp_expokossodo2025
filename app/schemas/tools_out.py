@@ -19,7 +19,7 @@ class EventoInfo(BaseModel):
     expositor: Optional[str] = None
     
     class Config:
-        json_json_schema_extra = {
+        schema_extra = {
             "example": {
                 "id": 123,
                 "titulo": "Innovaciones en Salud Digital",
@@ -39,7 +39,7 @@ class GetEventosOutput(BaseModel):
     total: Optional[int] = Field(None, description="Total de eventos encontrados")
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "eventos": [
                     {
@@ -66,7 +66,7 @@ class InscritoInfo(BaseModel):
     creadoEn: datetime
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "registroId": 1037,
                 "nombre": "Juan Pérez",
@@ -86,7 +86,7 @@ class GetInscritosOutput(BaseModel):
     lista: List[InscritoInfo] = Field(..., description="Lista de inscritos")
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "total": 150,
                 "page": 1,
@@ -114,7 +114,7 @@ class GetAforoOutput(BaseModel):
     noShowEstimado: int = Field(..., description="Estimación de no shows")
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "cupoTotal": 60,
                 "inscritos": 75,
@@ -133,7 +133,7 @@ class ConfirmarAsistenciaOutput(BaseModel):
     eventoId: int = Field(..., description="ID del evento procesado")
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "ok": True,
                 "timestamp": "2025-08-30T14:30:00",
@@ -150,7 +150,7 @@ class KpiInfo(BaseModel):
     detalle: Optional[Dict[str, Any]] = Field(None, description="Detalle adicional del KPI")
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "nombre": "tasaAsistencia",
                 "valor": 84.5,
@@ -170,7 +170,7 @@ class GetEstadisticasOutput(BaseModel):
     periodo: Dict[str, str] = Field(..., description="Período analizado")
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "kpis": [
                     {
@@ -202,7 +202,7 @@ class EventoAsociado(BaseModel):
     estado: str
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "eventoId": 123,
                 "titulo": "Innovaciones en Salud Digital",
@@ -220,7 +220,7 @@ class CoincidenciaRegistro(BaseModel):
     eventosAsociados: List[EventoAsociado] = Field(default_factory=list)
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "registroId": 1037,
                 "nombre": "Juan Pérez",
@@ -242,7 +242,7 @@ class BuscarRegistroOutput(BaseModel):
     total: int = Field(..., description="Total de coincidencias")
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "coincidencias": [
                     {
@@ -266,7 +266,7 @@ class SalaEventoItem(BaseModel):
     horario: str
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "sala": "Auditorio A",
                 "eventoId": 123,
@@ -283,7 +283,7 @@ class MapaSalaEventoOutput(BaseModel):
     total: int = Field(..., description="Total de eventos del día")
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "items": [
                     {
@@ -308,7 +308,7 @@ class MCPError(BaseModel):
     details: Optional[Dict[str, Any]] = Field(None, description="Detalles adicionales del error")
     
     class Config:
-        json_schema_extra = {
+        schema_extra = {
             "example": {
                 "error": "NOT_FOUND",
                 "message": "Evento no encontrado",

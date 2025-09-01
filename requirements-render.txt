@@ -1,22 +1,20 @@
-# Render-optimized requirements - using older stable versions with precompiled wheels
+# Render-compatible requirements - using Pydantic v1 to avoid Rust compilation
 # FastAPI and ASGI server
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
+fastapi==0.95.2
+uvicorn[standard]==0.22.0
 
 # Database 
 sqlalchemy==2.0.23
 aiomysql==0.2.0
 
-# Validation - using older Pydantic with guaranteed precompiled wheels
-pydantic==2.4.2
-pydantic-settings==2.0.3
+# Validation - Pydantic v1 (no Rust compilation required)
+pydantic==1.10.15
 
 # Configuration
 python-dotenv==1.0.0
 
-# Authentication - simpler JWT without cryptography
+# Authentication - minimal dependencies
 PyJWT==2.8.0
-passlib==1.7.4
 python-multipart==0.0.6
 
 # Rate limiting
@@ -25,13 +23,9 @@ slowapi==0.1.9
 # Logging
 structlog==23.2.0
 
-# HTTP client
-httpx==0.25.2
+# HTTP client - minimal
 requests==2.31.0
 
-# Essential dependencies
-greenlet==3.0.3
+# Core dependencies
 typing-extensions==4.8.0
-anyio==3.7.1
 starlette==0.27.0
-annotated-types==0.6.0
